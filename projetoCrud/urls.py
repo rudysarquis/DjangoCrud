@@ -16,14 +16,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from clientes import urls as clientes_urls
+from home import urls as home_url
 from django.conf import settings
 from django.conf.urls.static import static
-from django.contrib.auth.views import  LoginView  as LoginView
+from django.contrib.auth.views import LoginView as LoginView
 from django.contrib.auth.views import LogoutView as LogoutView
 
 urlpatterns = [
+    path('', include(home_url)),
     path('clientes/', include(clientes_urls)),
     path('login/', LoginView.as_view(), name='login'),
-    path('logout/', LogoutView.as_view(), name='logout'),
     path('admin/', admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

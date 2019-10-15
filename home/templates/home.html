@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>MTHER FUCKER</title>
+</head>
+<body>
+
+	<h1> SEJA BEM VINDO</h1>
+
+	{% if user.is_authenticated %}
+		<p>Olá {{ user.username }}</p>
+		<a href="{% url 'logout' %}">Sair</a>
+	{% else %}
+		<a href="{% url 'login' %}">Entrar</a>
+	{% endif %}
+
+</body>
+</html>
